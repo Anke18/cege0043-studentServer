@@ -24,3 +24,7 @@ app.use(function (req, res, next)
 	console.log("The file " + filename + " was requested.");
 	next();
 });
+
+// serve static files - e.g. html, css
+// this should always be the last line in the server file
+app.use(express.static(__dirname));
