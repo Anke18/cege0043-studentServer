@@ -50,6 +50,15 @@ app.get('/postgistest', function(req,res)
 	});
 });
 
+app.post('/reflectData',function(req,res)
+{
+	// using POST here as we are uploading data
+	// so the parameters form part of the BODY of the request rather than the RESTful API
+	console.dir(req.body);
+	// for now, just echo the request back to the client
+	res.send(req.body);
+});
+
 app.use(function(req, res, next) 
 {
 	res.header("Access-Control-Allow-Origin", "*");
