@@ -16,12 +16,10 @@ app.get('/:fileName', function (req, res)
 	res.sendFile(__dirname + '/'+ fileName);
 });
 
-// adding functionality to log the requests
-app.use(function (req, res, next) 
+app.use(function(req, res, next) 
 {
-	var filename = path.basename(req.url);
-	var extension = path.extname(filename);
-	console.log("The file " + filename + " was requested.");
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "X-Requested-With");
 	next();
 });
 
