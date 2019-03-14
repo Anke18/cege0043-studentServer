@@ -9,6 +9,13 @@ var http = require('http');
 var httpServer = http.createServer(app);
 httpServer.listen(4480);
 
+app.use(function(req, res, next) 
+{
+	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", "X-Requested-With");
+	next();
+});
+
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -126,13 +133,6 @@ app.post('/uploadData',function(req,res)
 			res.status(200).send("row inserted");
 		});
 	});
-});
-
-app.use(function(req, res, next) 
-{
-	res.header("Access-Control-Allow-Origin", "*");
-	res.header("Access-Control-Allow-Headers", "X-Requested-With");
-	next();
 });
 
 // serve static files - e.g. html, css
